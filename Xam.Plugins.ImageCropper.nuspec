@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>Xam.Plugins.ImageCropper</id>
+    <version>1.0.0</version>
+    <title>Xam.Plugins.ImageCropper</title>
+    <authors>Michael Ridland @ XAM Consulting</authors>
+    <owners>Michael Ridland @ XAM Consulting</owners>
+    <projectUrl>https://github.com/XAM-Consulting/Xam.Plugins.ImageCropper</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Easily crop and rotate image</description>
+    <tags>Xamarin, Xamarin.iOS, Xamarin.Android,ImageCropper</tags>
+  </metadata>
+  <files>
+    <file src="Droid/bin/Release/Xam.Plugins.ImageCropper.Droid.dll" target="lib\MonoAndroid10"/>
+    <file src="iOS/bin/Release/Xam.Plugins.ImageCropper.iOS.dll" target="lib\Xamarin.iOS10" />
+  </files>
+</package>
