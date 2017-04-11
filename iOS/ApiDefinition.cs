@@ -7,27 +7,6 @@ using CoreGraphics;
 
 namespace Xam.Plugins.ImageCropper.iOS
 {
-    // @interface TOActivityCroppedImageProvider : UIActivityItemProvider
-    [BaseType(typeof(UIActivityItemProvider))]
-    interface TOActivityCroppedImageProvider
-    {
-        // @property (readonly, nonatomic) UIImage * image;
-        [Export("image")]
-        UIImage Image { get; }
-
-        // @property (readonly, nonatomic) CGRect cropFrame;
-        [Export("cropFrame")]
-        CGRect CropFrame { get; }
-
-        // @property (readonly, nonatomic) NSInteger angle;
-        [Export("angle")]
-        nint Angle { get; }
-
-        // -(instancetype)initWithImage:(UIImage *)image cropFrame:(CGRect)cropFrame angle:(NSInteger)angle;
-        [Export("initWithImage:cropFrame:angle:")]
-        IntPtr Constructor(UIImage image, CGRect cropFrame, nint angle);
-    }
-
     // @interface TOCropOverlayView : UIView
     [BaseType(typeof(UIView))]
     interface TOCropOverlayView
@@ -49,148 +28,17 @@ namespace Xam.Plugins.ImageCropper.iOS
         void SetGridHidden(bool hidden, bool animated);
     }
 
-    // @interface TOCroppedImageAttributes : NSObject
-    [BaseType(typeof(NSObject))]
-    interface TOCroppedImageAttributes
-    {
-        // @property (readonly, nonatomic) NSInteger angle;
-        [Export("angle")]
-        nint Angle { get; }
-
-        // @property (readonly, nonatomic) CGRect croppedFrame;
-        [Export("croppedFrame")]
-        CGRect CroppedFrame { get; }
-
-        // @property (readonly, nonatomic) CGSize originalImageSize;
-        [Export("originalImageSize")]
-        CGSize OriginalImageSize { get; }
-
-        // -(instancetype)initWithCroppedFrame:(CGRect)croppedFrame angle:(NSInteger)angle originalImageSize:(CGSize)originalSize;
-        [Export("initWithCroppedFrame:angle:originalImageSize:")]
-        IntPtr Constructor(CGRect croppedFrame, nint angle, CGSize originalSize);
-    }
-
-    // @interface TOCropScrollView : UIScrollView
-    [BaseType(typeof(UIScrollView))]
-    interface TOCropScrollView
-    {
-        // @property (copy, nonatomic) void (^touchesBegan)();
-        [Export("touchesBegan", ArgumentSemantic.Copy)]
-        Action TouchesBegan { get; set; }
-
-        // @property (copy, nonatomic) void (^touchesCancelled)();
-        [Export("touchesCancelled", ArgumentSemantic.Copy)]
-        Action TouchesCancelled { get; set; }
-
-        // @property (copy, nonatomic) void (^touchesEnded)();
-        [Export("touchesEnded", ArgumentSemantic.Copy)]
-        Action TouchesEnded { get; set; }
-    }
-
-    // @interface TOCropToolbar : UIView
-    [BaseType(typeof(UIView))]
-    interface TOCropToolbar
-    {
-        // @property (readonly, nonatomic, strong) UIButton * doneTextButton;
-        [Export("doneTextButton", ArgumentSemantic.Strong)]
-        UIButton DoneTextButton { get; }
-
-        // @property (readonly, nonatomic, strong) UIButton * doneIconButton;
-        [Export("doneIconButton", ArgumentSemantic.Strong)]
-        UIButton DoneIconButton { get; }
-
-        // @property (readonly, nonatomic, strong) UIButton * cancelTextButton;
-        [Export("cancelTextButton", ArgumentSemantic.Strong)]
-        UIButton CancelTextButton { get; }
-
-        // @property (readonly, nonatomic, strong) UIButton * cancelIconButton;
-        [Export("cancelIconButton", ArgumentSemantic.Strong)]
-        UIButton CancelIconButton { get; }
-
-        // @property (readonly, nonatomic, strong) UIButton * rotateCounterclockwiseButton;
-        [Export("rotateCounterclockwiseButton", ArgumentSemantic.Strong)]
-        UIButton RotateCounterclockwiseButton { get; }
-
-        // @property (readonly, nonatomic, strong) UIButton * resetButton;
-        [Export("resetButton", ArgumentSemantic.Strong)]
-        UIButton ResetButton { get; }
-
-        // @property (readonly, nonatomic, strong) UIButton * clampButton;
-        [Export("clampButton", ArgumentSemantic.Strong)]
-        UIButton ClampButton { get; }
-
-        // @property (readonly, nonatomic, strong) UIButton * rotateClockwiseButton;
-        [Export("rotateClockwiseButton", ArgumentSemantic.Strong)]
-        UIButton RotateClockwiseButton { get; }
-
-        // @property (readonly, nonatomic) UIButton * rotateButton;
-        [Export("rotateButton")]
-        UIButton RotateButton { get; }
-
-        // @property (copy, nonatomic) void (^cancelButtonTapped)();
-        [Export("cancelButtonTapped", ArgumentSemantic.Copy)]
-        Action CancelButtonTapped { get; set; }
-
-        // @property (copy, nonatomic) void (^doneButtonTapped)();
-        [Export("doneButtonTapped", ArgumentSemantic.Copy)]
-        Action DoneButtonTapped { get; set; }
-
-        // @property (copy, nonatomic) void (^rotateCounterclockwiseButtonTapped)();
-        [Export("rotateCounterclockwiseButtonTapped", ArgumentSemantic.Copy)]
-        Action RotateCounterclockwiseButtonTapped { get; set; }
-
-        // @property (copy, nonatomic) void (^rotateClockwiseButtonTapped)();
-        [Export("rotateClockwiseButtonTapped", ArgumentSemantic.Copy)]
-        Action RotateClockwiseButtonTapped { get; set; }
-
-        // @property (copy, nonatomic) void (^clampButtonTapped)();
-        [Export("clampButtonTapped", ArgumentSemantic.Copy)]
-        Action ClampButtonTapped { get; set; }
-
-        // @property (copy, nonatomic) void (^resetButtonTapped)();
-        [Export("resetButtonTapped", ArgumentSemantic.Copy)]
-        Action ResetButtonTapped { get; set; }
-
-        // @property (assign, nonatomic) BOOL clampButtonHidden;
-        [Export("clampButtonHidden")]
-        bool ClampButtonHidden { get; set; }
-
-        // @property (assign, nonatomic) BOOL clampButtonGlowing;
-        [Export("clampButtonGlowing")]
-        bool ClampButtonGlowing { get; set; }
-
-        // @property (readonly, nonatomic) CGRect clampButtonFrame;
-        [Export("clampButtonFrame")]
-        CGRect ClampButtonFrame { get; }
-
-        // @property (assign, nonatomic) BOOL rotateCounterClockwiseButtonHidden;
-        [Export("rotateCounterClockwiseButtonHidden")]
-        bool RotateCounterClockwiseButtonHidden { get; set; }
-
-        // @property (assign, nonatomic) BOOL rotateClockwiseButtonHidden;
-        [Export("rotateClockwiseButtonHidden")]
-        bool RotateClockwiseButtonHidden { get; set; }
-
-        // @property (assign, nonatomic) BOOL resetButtonEnabled;
-        [Export("resetButtonEnabled")]
-        bool ResetButtonEnabled { get; set; }
-
-        // @property (readonly, nonatomic) CGRect doneButtonFrame;
-        [Export("doneButtonFrame")]
-        CGRect DoneButtonFrame { get; }
-    }
-
     // @protocol TOCropViewDelegate <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
     interface TOCropViewDelegate
     {
-        // @required -(void)cropViewDidBecomeResettable:(TOCropView *)cropView;
+        // @required -(void)cropViewDidBecomeResettable:(TOCropView * _Nonnull)cropView;
         [Abstract]
         [Export("cropViewDidBecomeResettable:")]
         void CropViewDidBecomeResettable(TOCropView cropView);
 
-        // @required -(void)cropViewDidBecomeNonResettable:(TOCropView *)cropView;
+        // @required -(void)cropViewDidBecomeNonResettable:(TOCropView * _Nonnull)cropView;
         [Abstract]
         [Export("cropViewDidBecomeNonResettable:")]
         void CropViewDidBecomeNonResettable(TOCropView cropView);
@@ -200,17 +48,17 @@ namespace Xam.Plugins.ImageCropper.iOS
     [BaseType(typeof(UIView))]
     interface TOCropView
     {
-        // @property (readonly, nonatomic, strong) UIImage * image;
+        // @property (readonly, nonatomic, strong) UIImage * _Nonnull image;
         [Export("image", ArgumentSemantic.Strong)]
         UIImage Image { get; }
 
-        // @property (readonly, nonatomic, strong) TOCropOverlayView * gridOverlayView;
+        // @property (readonly, assign, nonatomic) TOCropViewCroppingStyle croppingStyle;
+        [Export("croppingStyle", ArgumentSemantic.Assign)]
+        TOCropViewCroppingStyle CroppingStyle { get; }
+
+        // @property (readonly, nonatomic, strong) TOCropOverlayView * _Nonnull gridOverlayView;
         [Export("gridOverlayView", ArgumentSemantic.Strong)]
         TOCropOverlayView GridOverlayView { get; }
-
-        // @property (assign, nonatomic) BOOL cropBoxResizeEnabled;
-        [Export("cropBoxResizeEnabled")]
-        bool CropBoxResizeEnabled { get; set; }
 
         [Wrap("WeakDelegate")]
         [NullAllowed]
@@ -220,9 +68,13 @@ namespace Xam.Plugins.ImageCropper.iOS
         [NullAllowed, Export("delegate", ArgumentSemantic.Weak)]
         NSObject WeakDelegate { get; set; }
 
-        // @property (readonly, nonatomic) BOOL canReset;
-        [Export("canReset")]
-        bool CanReset { get; }
+        // @property (assign, nonatomic) BOOL cropBoxResizeEnabled;
+        [Export("cropBoxResizeEnabled")]
+        bool CropBoxResizeEnabled { get; set; }
+
+        // @property (readonly, nonatomic) BOOL canBeReset;
+        [Export("canBeReset")]
+        bool CanBeReset { get; }
 
         // @property (readonly, nonatomic) CGRect cropBoxFrame;
         [Export("cropBoxFrame")]
@@ -236,41 +88,57 @@ namespace Xam.Plugins.ImageCropper.iOS
         [Export("cropRegionInsets", ArgumentSemantic.Assign)]
         UIEdgeInsets CropRegionInsets { get; set; }
 
-        // @property (assign, nonatomic) BOOL simpleMode;
-        [Export("simpleMode")]
-        bool SimpleMode { get; set; }
+        // @property (assign, nonatomic) BOOL simpleRenderMode;
+        [Export("simpleRenderMode")]
+        bool SimpleRenderMode { get; set; }
 
-        // @property (assign, nonatomic) BOOL aspectRatioLocked;
-        [Export("aspectRatioLocked")]
-        bool AspectRatioLocked { get; set; }
+        // @property (assign, nonatomic) BOOL internalLayoutDisabled;
+        [Export("internalLayoutDisabled")]
+        bool InternalLayoutDisabled { get; set; }
+
+        // @property (assign, nonatomic) CGSize aspectRatio;
+        [Export("aspectRatio", ArgumentSemantic.Assign)]
+        CGSize AspectRatio { get; set; }
+
+        // @property (assign, nonatomic) BOOL aspectRatioLockEnabled;
+        [Export("aspectRatioLockEnabled")]
+        bool AspectRatioLockEnabled { get; set; }
+
+        // @property (assign, nonatomic) BOOL resetAspectRatioEnabled;
+        [Export("resetAspectRatioEnabled")]
+        bool ResetAspectRatioEnabled { get; set; }
 
         // @property (readonly, nonatomic) BOOL cropBoxAspectRatioIsPortrait;
         [Export("cropBoxAspectRatioIsPortrait")]
         bool CropBoxAspectRatioIsPortrait { get; }
 
-        // @property (readonly, assign, nonatomic) NSInteger angle;
+        // @property (assign, nonatomic) NSInteger angle;
         [Export("angle")]
-        nint Angle { get; }
+        nint Angle { get; set; }
 
         // @property (assign, nonatomic) BOOL croppingViewsHidden;
         [Export("croppingViewsHidden")]
         bool CroppingViewsHidden { get; set; }
 
-        // @property (readonly, nonatomic) CGRect croppedImageFrame;
-        [Export("croppedImageFrame")]
-        CGRect CroppedImageFrame { get; }
+        // @property (assign, nonatomic) CGRect imageCropFrame;
+        [Export("imageCropFrame", ArgumentSemantic.Assign)]
+        CGRect ImageCropFrame { get; set; }
 
         // @property (assign, nonatomic) BOOL gridOverlayHidden;
         [Export("gridOverlayHidden")]
         bool GridOverlayHidden { get; set; }
 
-        // -(instancetype)initWithImage:(UIImage *)image;
+        // -(instancetype _Nonnull)initWithImage:(UIImage * _Nonnull)image;
         [Export("initWithImage:")]
         IntPtr Constructor(UIImage image);
 
-        // -(void)setSimpleMode:(BOOL)simpleMode animated:(BOOL)animated;
-        [Export("setSimpleMode:animated:")]
-        void SetSimpleMode(bool simpleMode, bool animated);
+        // -(instancetype _Nonnull)initWithCroppingStyle:(TOCropViewCroppingStyle)style image:(UIImage * _Nonnull)image;
+        [Export("initWithCroppingStyle:image:")]
+        IntPtr Constructor(TOCropViewCroppingStyle style, UIImage image);
+
+        // -(void)setSimpleRenderMode:(BOOL)simpleMode animated:(BOOL)animated;
+        [Export("setSimpleRenderMode:animated:")]
+        void SetSimpleRenderMode(bool simpleMode, bool animated);
 
         // -(void)prepareforRotation;
         [Export("prepareforRotation")]
@@ -284,9 +152,9 @@ namespace Xam.Plugins.ImageCropper.iOS
         [Export("resetLayoutToDefaultAnimated:")]
         void ResetLayoutToDefaultAnimated(bool animated);
 
-        // -(void)setAspectLockEnabledWithAspectRatio:(CGSize)aspectRatio animated:(BOOL)animated;
-        [Export("setAspectLockEnabledWithAspectRatio:animated:")]
-        void SetAspectLockEnabledWithAspectRatio(CGSize aspectRatio, bool animated);
+        // -(void)setAspectRatio:(CGSize)aspectRatio animated:(BOOL)animated;
+        [Export("setAspectRatio:animated:")]
+        void SetAspectRatio(CGSize aspectRatio, bool animated);
 
         // -(void)rotateImageNinetyDegreesAnimated:(BOOL)animated;
         [Export("rotateImageNinetyDegreesAnimated:")]
@@ -303,6 +171,111 @@ namespace Xam.Plugins.ImageCropper.iOS
         // -(void)setCroppingViewsHidden:(BOOL)hidden animated:(BOOL)animated;
         [Export("setCroppingViewsHidden:animated:")]
         void SetCroppingViewsHidden(bool hidden, bool animated);
+
+        // -(void)setBackgroundImageViewHidden:(BOOL)hidden animated:(BOOL)animated;
+        [Export("setBackgroundImageViewHidden:animated:")]
+        void SetBackgroundImageViewHidden(bool hidden, bool animated);
+
+        // -(void)moveCroppedContentToCenterAnimated:(BOOL)animated;
+        [Export("moveCroppedContentToCenterAnimated:")]
+        void MoveCroppedContentToCenterAnimated(bool animated);
+    }
+
+    // @interface TOCropToolbar : UIView
+    [BaseType(typeof(UIView))]
+    interface TOCropToolbar
+    {
+        // @property (assign, nonatomic) BOOL statusBarVisible;
+        [Export("statusBarVisible")]
+        bool StatusBarVisible { get; set; }
+
+        // @property (readonly, nonatomic, strong) UIButton * _Nonnull doneTextButton;
+        [Export("doneTextButton", ArgumentSemantic.Strong)]
+        UIButton DoneTextButton { get; }
+
+        // @property (readonly, nonatomic, strong) UIButton * _Nonnull doneIconButton;
+        [Export("doneIconButton", ArgumentSemantic.Strong)]
+        UIButton DoneIconButton { get; }
+
+        // @property (readonly, nonatomic, strong) UIButton * _Nonnull cancelTextButton;
+        [Export("cancelTextButton", ArgumentSemantic.Strong)]
+        UIButton CancelTextButton { get; }
+
+        // @property (readonly, nonatomic, strong) UIButton * _Nonnull cancelIconButton;
+        [Export("cancelIconButton", ArgumentSemantic.Strong)]
+        UIButton CancelIconButton { get; }
+
+        // @property (readonly, nonatomic, strong) UIButton * _Nonnull rotateCounterclockwiseButton;
+        [Export("rotateCounterclockwiseButton", ArgumentSemantic.Strong)]
+        UIButton RotateCounterclockwiseButton { get; }
+
+        // @property (readonly, nonatomic, strong) UIButton * _Nonnull resetButton;
+        [Export("resetButton", ArgumentSemantic.Strong)]
+        UIButton ResetButton { get; }
+
+        // @property (readonly, nonatomic, strong) UIButton * _Nonnull clampButton;
+        [Export("clampButton", ArgumentSemantic.Strong)]
+        UIButton ClampButton { get; }
+
+        // @property (readonly, nonatomic, strong) UIButton * _Nonnull rotateClockwiseButton;
+        [Export("rotateClockwiseButton", ArgumentSemantic.Strong)]
+        UIButton RotateClockwiseButton { get; }
+
+        // @property (readonly, nonatomic) UIButton * _Nonnull rotateButton;
+        [Export("rotateButton")]
+        UIButton RotateButton { get; }
+
+        // @property (copy, nonatomic) void (^ _Nullable)(void) cancelButtonTapped;
+        [NullAllowed, Export("cancelButtonTapped", ArgumentSemantic.Copy)]
+        Action CancelButtonTapped { get; set; }
+
+        // @property (copy, nonatomic) void (^ _Nullable)(void) doneButtonTapped;
+        [NullAllowed, Export("doneButtonTapped", ArgumentSemantic.Copy)]
+        Action DoneButtonTapped { get; set; }
+
+        // @property (copy, nonatomic) void (^ _Nullable)(void) rotateCounterclockwiseButtonTapped;
+        [NullAllowed, Export("rotateCounterclockwiseButtonTapped", ArgumentSemantic.Copy)]
+        Action RotateCounterclockwiseButtonTapped { get; set; }
+
+        // @property (copy, nonatomic) void (^ _Nullable)(void) rotateClockwiseButtonTapped;
+        [NullAllowed, Export("rotateClockwiseButtonTapped", ArgumentSemantic.Copy)]
+        Action RotateClockwiseButtonTapped { get; set; }
+
+        // @property (copy, nonatomic) void (^ _Nullable)(void) clampButtonTapped;
+        [NullAllowed, Export("clampButtonTapped", ArgumentSemantic.Copy)]
+        Action ClampButtonTapped { get; set; }
+
+        // @property (copy, nonatomic) void (^ _Nullable)(void) resetButtonTapped;
+        [NullAllowed, Export("resetButtonTapped", ArgumentSemantic.Copy)]
+        Action ResetButtonTapped { get; set; }
+
+        // @property (assign, nonatomic) BOOL clampButtonGlowing;
+        [Export("clampButtonGlowing")]
+        bool ClampButtonGlowing { get; set; }
+
+        // @property (readonly, nonatomic) CGRect clampButtonFrame;
+        [Export("clampButtonFrame")]
+        CGRect ClampButtonFrame { get; }
+
+        // @property (assign, nonatomic) BOOL clampButtonHidden;
+        [Export("clampButtonHidden")]
+        bool ClampButtonHidden { get; set; }
+
+        // @property (assign, nonatomic) BOOL rotateCounterclockwiseButtonHidden;
+        [Export("rotateCounterclockwiseButtonHidden")]
+        bool RotateCounterclockwiseButtonHidden { get; set; }
+
+        // @property (assign, nonatomic) BOOL rotateClockwiseButtonHidden;
+        [Export("rotateClockwiseButtonHidden")]
+        bool RotateClockwiseButtonHidden { get; set; }
+
+        // @property (assign, nonatomic) BOOL resetButtonEnabled;
+        [Export("resetButtonEnabled")]
+        bool ResetButtonEnabled { get; set; }
+
+        // @property (readonly, nonatomic) CGRect doneButtonFrame;
+        [Export("doneButtonFrame")]
+        CGRect DoneButtonFrame { get; }
     }
 
     // @protocol TOCropViewControllerDelegate <NSObject>
@@ -310,15 +283,19 @@ namespace Xam.Plugins.ImageCropper.iOS
     [BaseType(typeof(NSObject))]
     interface TOCropViewControllerDelegate
     {
-        // @optional -(void)cropViewController:(TOCropViewController *)cropViewController didCropImageToRect:(CGRect)cropRect angle:(NSInteger)angle;
+        // @optional -(void)cropViewController:(TOCropViewController * _Nonnull)cropViewController didCropImageToRect:(CGRect)cropRect angle:(NSInteger)angle;
         [Export("cropViewController:didCropImageToRect:angle:")]
         void DidCropImageToRect(TOCropViewController cropViewController, CGRect cropRect, nint angle);
 
-        // @optional -(void)cropViewController:(TOCropViewController *)cropViewController didCropToImage:(UIImage *)image withRect:(CGRect)cropRect angle:(NSInteger)angle;
+        // @optional -(void)cropViewController:(TOCropViewController * _Nonnull)cropViewController didCropToImage:(UIImage * _Nonnull)image withRect:(CGRect)cropRect angle:(NSInteger)angle;
         [Export("cropViewController:didCropToImage:withRect:angle:")]
         void DidCropToImage(TOCropViewController cropViewController, UIImage image, CGRect cropRect, nint angle);
 
-        // @optional -(void)cropViewController:(TOCropViewController *)cropViewController didFinishCancelled:(BOOL)cancelled;
+        // @optional -(void)cropViewController:(TOCropViewController * _Nonnull)cropViewController didCropToCircularImage:(UIImage * _Nonnull)image withRect:(CGRect)cropRect angle:(NSInteger)angle;
+        [Export("cropViewController:didCropToCircularImage:withRect:angle:")]
+        void DidCropToCircularImage(TOCropViewController cropViewController, UIImage image, CGRect cropRect, nint angle);
+
+        // @optional -(void)cropViewController:(TOCropViewController * _Nonnull)cropViewController didFinishCancelled:(BOOL)cancelled;
         [Export("cropViewController:didFinishCancelled:")]
         void DidFinishCancelled(TOCropViewController cropViewController, bool cancelled);
     }
@@ -327,17 +304,9 @@ namespace Xam.Plugins.ImageCropper.iOS
     [BaseType(typeof(UIViewController))]
     interface TOCropViewController
     {
-        // @property (readonly, nonatomic) UIImage * image;
+        // @property (readonly, nonatomic) UIImage * _Nonnull image;
         [Export("image")]
         UIImage Image { get; }
-
-        // @property (readonly, nonatomic, strong) TOCropView * cropView;
-        [Export("cropView", ArgumentSemantic.Strong)]
-        TOCropView CropView { get; }
-
-        // @property (readonly, nonatomic, strong) TOCropToolbar * toolbar;
-        [Export("toolbar", ArgumentSemantic.Strong)]
-        TOCropToolbar Toolbar { get; }
 
         [Wrap("WeakDelegate")]
         [NullAllowed]
@@ -351,9 +320,41 @@ namespace Xam.Plugins.ImageCropper.iOS
         [Export("showActivitySheetOnDone")]
         bool ShowActivitySheetOnDone { get; set; }
 
-        // @property (assign, nonatomic) TOCropViewControllerAspectRatio defaultAspectRatio;
-        [Export("defaultAspectRatio", ArgumentSemantic.Assign)]
-        TOCropViewControllerAspectRatio DefaultAspectRatio { get; set; }
+        // @property (readonly, nonatomic, strong) TOCropView * _Nonnull cropView;
+        [Export("cropView", ArgumentSemantic.Strong)]
+        TOCropView CropView { get; }
+
+        // @property (assign, nonatomic) CGRect imageCropFrame;
+        [Export("imageCropFrame", ArgumentSemantic.Assign)]
+        CGRect ImageCropFrame { get; set; }
+
+        // @property (assign, nonatomic) NSInteger angle;
+        [Export("angle")]
+        nint Angle { get; set; }
+
+        // @property (readonly, nonatomic, strong) TOCropToolbar * _Nonnull toolbar;
+        [Export("toolbar", ArgumentSemantic.Strong)]
+        TOCropToolbar Toolbar { get; }
+
+        // @property (readonly, nonatomic) TOCropViewCroppingStyle croppingStyle;
+        [Export("croppingStyle")]
+        TOCropViewCroppingStyle CroppingStyle { get; }
+
+        // @property (assign, nonatomic) TOCropViewControllerAspectRatioPreset aspectRatioPreset;
+        [Export("aspectRatioPreset", ArgumentSemantic.Assign)]
+        TOCropViewControllerAspectRatioPreset AspectRatioPreset { get; set; }
+
+        // @property (assign, nonatomic) CGSize customAspectRatio;
+        [Export("customAspectRatio", ArgumentSemantic.Assign)]
+        CGSize CustomAspectRatio { get; set; }
+
+        // @property (assign, nonatomic) BOOL aspectRatioLockEnabled;
+        [Export("aspectRatioLockEnabled")]
+        bool AspectRatioLockEnabled { get; set; }
+
+        // @property (assign, nonatomic) BOOL resetAspectRatioEnabled;
+        [Export("resetAspectRatioEnabled")]
+        bool ResetAspectRatioEnabled { get; set; }
 
         // @property (assign, nonatomic) TOCropViewControllerToolbarPosition toolbarPosition;
         [Export("toolbarPosition", ArgumentSemantic.Assign)]
@@ -367,80 +368,54 @@ namespace Xam.Plugins.ImageCropper.iOS
         [Export("rotateButtonsHidden")]
         bool RotateButtonsHidden { get; set; }
 
-        // @property (assign, nonatomic) BOOL aspectRatioLocked;
-        [Export("aspectRatioLocked")]
-        bool AspectRatioLocked { get; set; }
+        // @property (assign, nonatomic) BOOL aspectRatioPickerButtonHidden;
+        [Export("aspectRatioPickerButtonHidden")]
+        bool AspectRatioPickerButtonHidden { get; set; }
 
-        // @property (copy, nonatomic) void (^prepareForTransitionHandler)();
-        [Export("prepareForTransitionHandler", ArgumentSemantic.Copy)]
-        Action PrepareForTransitionHandler { get; set; }
-
-        // @property (nonatomic, strong) NSArray * activityItems;
-        [Export("activityItems", ArgumentSemantic.Strong)]
+        // @property (nonatomic, strong) NSArray * _Nullable activityItems;
+        [NullAllowed, Export("activityItems", ArgumentSemantic.Strong)]
         NSObject[] ActivityItems { get; set; }
 
-        // @property (nonatomic, strong) NSArray * applicationActivities;
-        [Export("applicationActivities", ArgumentSemantic.Strong)]
+        // @property (nonatomic, strong) NSArray * _Nullable applicationActivities;
+        [NullAllowed, Export("applicationActivities", ArgumentSemantic.Strong)]
         NSObject[] ApplicationActivities { get; set; }
 
-        // @property (nonatomic, strong) NSArray * excludedActivityTypes;
-        [Export("excludedActivityTypes", ArgumentSemantic.Strong)]
+        // @property (nonatomic, strong) NSArray * _Nullable excludedActivityTypes;
+        [NullAllowed, Export("excludedActivityTypes", ArgumentSemantic.Strong)]
         NSObject[] ExcludedActivityTypes { get; set; }
 
-        // -(instancetype)initWithImage:(UIImage *)image;
+        // -(instancetype _Nonnull)initWithImage:(UIImage * _Nonnull)image;
         [Export("initWithImage:")]
         IntPtr Constructor(UIImage image);
 
-        // -(void)presentAnimatedFromParentViewController:(UIViewController *)viewController fromFrame:(CGRect)frame completion:(void (^)(void))completion;
-        [Export("presentAnimatedFromParentViewController:fromFrame:completion:")]
-        void PresentAnimatedFromParentViewController(UIViewController viewController, CGRect frame, Action completion);
+        // -(instancetype _Nonnull)initWithCroppingStyle:(TOCropViewCroppingStyle)style image:(UIImage * _Nonnull)image;
+        [Export("initWithCroppingStyle:image:")]
+        IntPtr Constructor(TOCropViewCroppingStyle style, UIImage image);
 
-        // -(void)dismissAnimatedFromParentViewController:(UIViewController *)viewController withCroppedImage:(UIImage *)image toFrame:(CGRect)frame completion:(void (^)(void))completion;
-        [Export("dismissAnimatedFromParentViewController:withCroppedImage:toFrame:completion:")]
-        void DismissAnimatedFromParentViewController(UIViewController viewController, UIImage image, CGRect frame, Action completion);
+        // -(void)resetCropViewLayout;
+        [Export("resetCropViewLayout")]
+        void ResetCropViewLayout();
 
-        // -(void)dismissAnimatedFromParentViewController:(UIViewController *)viewController toFrame:(CGRect)frame completion:(void (^)(void))completion;
-        [Export("dismissAnimatedFromParentViewController:toFrame:completion:")]
-        void DismissAnimatedFromParentViewController(UIViewController viewController, CGRect frame, Action completion);
+        // -(void)setAspectRatioPreset:(TOCropViewControllerAspectRatioPreset)aspectRatioPreset animated:(BOOL)animated;
+        [Export("setAspectRatioPreset:animated:")]
+        void SetAspectRatioPreset(TOCropViewControllerAspectRatioPreset aspectRatioPreset, bool animated);
+
+        // -(void)presentAnimatedFromParentViewController:(UIViewController * _Nonnull)viewController fromView:(UIView * _Nullable)fromView fromFrame:(CGRect)fromFrame setup:(void (^ _Nullable)(void))setup completion:(void (^ _Nullable)(void))completion;
+        [Export("presentAnimatedFromParentViewController:fromView:fromFrame:setup:completion:")]
+        void PresentAnimatedFromParentViewController(UIViewController viewController, [NullAllowed] UIView fromView, CGRect fromFrame, [NullAllowed] Action setup, [NullAllowed] Action completion);
+
+        // -(void)presentAnimatedFromParentViewController:(UIViewController * _Nonnull)viewController fromImage:(UIImage * _Nullable)image fromView:(UIView * _Nullable)fromView fromFrame:(CGRect)fromFrame angle:(NSInteger)angle toImageFrame:(CGRect)toFrame setup:(void (^ _Nullable)(void))setup completion:(void (^ _Nullable)(void))completion;
+        [Export("presentAnimatedFromParentViewController:fromImage:fromView:fromFrame:angle:toImageFrame:setup:completion:")]
+        void PresentAnimatedFromParentViewController(UIViewController viewController, [NullAllowed] UIImage image, [NullAllowed] UIView fromView, CGRect fromFrame, nint angle, CGRect toFrame, [NullAllowed] Action setup, [NullAllowed] Action completion);
+
+        // -(void)dismissAnimatedFromParentViewController:(UIViewController * _Nonnull)viewController toView:(UIView * _Nullable)toView toFrame:(CGRect)frame setup:(void (^ _Nullable)(void))setup completion:(void (^ _Nullable)(void))completion;
+        [Export("dismissAnimatedFromParentViewController:toView:toFrame:setup:completion:")]
+        void DismissAnimatedFromParentViewController(UIViewController viewController, [NullAllowed] UIView toView, CGRect frame, [NullAllowed] Action setup, [NullAllowed] Action completion);
+
+        // -(void)dismissAnimatedFromParentViewController:(UIViewController * _Nonnull)viewController withCroppedImage:(UIImage * _Nullable)image toView:(UIView * _Nullable)toView toFrame:(CGRect)frame setup:(void (^ _Nullable)(void))setup completion:(void (^ _Nullable)(void))completion;
+        [Export("dismissAnimatedFromParentViewController:withCroppedImage:toView:toFrame:setup:completion:")]
+        void DismissAnimatedFromParentViewController(UIViewController viewController, [NullAllowed] UIImage image, [NullAllowed] UIView toView, CGRect frame, [NullAllowed] Action setup, [NullAllowed] Action completion);
     }
 
-    // @interface TOCropViewControllerTransitioning : NSObject <UIViewControllerAnimatedTransitioning>
-    [BaseType(typeof(NSObject))]
-    interface TOCropViewControllerTransitioning : IUIViewControllerAnimatedTransitioning
-    {
-        // @property (assign, nonatomic) BOOL isDismissing;
-        [Export("isDismissing")]
-        bool IsDismissing { get; set; }
-
-        // @property (nonatomic, strong) UIImage * image;
-        [Export("image", ArgumentSemantic.Strong)]
-        UIImage Image { get; set; }
-
-        // @property (assign, nonatomic) CGRect fromFrame;
-        [Export("fromFrame", ArgumentSemantic.Assign)]
-        CGRect FromFrame { get; set; }
-
-        // @property (assign, nonatomic) CGRect toFrame;
-        [Export("toFrame", ArgumentSemantic.Assign)]
-        CGRect ToFrame { get; set; }
-
-        // @property (copy, nonatomic) void (^prepareForTransitionHandler)();
-        [Export("prepareForTransitionHandler", ArgumentSemantic.Copy)]
-        Action PrepareForTransitionHandler { get; set; }
-
-        // -(void)reset;
-        [Export("reset")]
-        void Reset();
-    }
-
-    // @interface CropRotate (UIImage)
-    [Category]
-    [BaseType(typeof(UIImage))]
-    interface UIImage_CropRotate
-    {
-        // -(UIImage *)croppedImageWithFrame:(CGRect)frame angle:(NSInteger)angle;
-        [Export("croppedImageWithFrame:angle:")]
-        UIImage CroppedImageWithFrame(CGRect frame, nint angle);
-    }
 }
 

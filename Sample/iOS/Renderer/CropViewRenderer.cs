@@ -41,7 +41,10 @@ namespace Xam.Plugins.ImageCropper.Sample.iOS
                     Image = null;
 
                     selector = new CropViewDelegate(this);
+
                     TOCropViewController picker = new TOCropViewController(image);
+                    // Demo for Circular Cropped Image
+                    //TOCropViewController picker = new TOCropViewController(TOCropViewCroppingStyle.Circular, image);
                     picker.Delegate = selector;
 
                     PresentViewController(picker, false, null);
