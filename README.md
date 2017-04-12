@@ -8,7 +8,9 @@ Please follow the Sample solution in repo to use them in Xamarin.Forms.
 ## iOS
 ![iOS](https://github.com/XAM-Consulting/Xam.Plugins.ImageCropper/blob/master/art/iOSDemo.gif?raw=true)
 
-#Thanks
-Android library from : https://github.com/ArthurHub/Android-Image-Cropper
+## Build
+You can build these binding libraries by your self. For iOS, run make in iOS/extern, then build iOS project. For Android, download the lastest .aar and import the package into Android project, make sure you have installed JDK 1.8 and Android SDK 25.
 
-iOS library from : https://github.com/BradleyDHobbs/Xamarin.CropView and https://github.com/TimOliver/TOCropViewController
+## Thanks
+Android library from : https://github.com/ArthurHub/Android-Image-Cropper
+iOS library from : https://github.com/TimOliver/TOCropViewController
