@@ -14,11 +14,11 @@ Podfile.lock:
 	cd ios/TOCropViewController && git checkout $(IOS_GIT_BRANCH)
 
 TOCropViewController-iphonesimulator: Podfile.lock
-	cd $(WORKSPACE_DIR) && $(XBUILD) -project $(WORKSPACE) -scheme $(SCHEME) -sdk iphonesimulator -configuration Release VALID_ARCHS=$(VALID_ARCHS) ONLY_ACTIVE_ARCH=NO EFFECTIVE_PLATFORM_NAME="-iphonesimulator" -derivedDataPath build clean build	
+	cd $(WORKSPACE_DIR) && $(XBUILD) -project $(WORKSPACE) -scheme $(SCHEME) -sdk iphonesimulator -configuration Release VALID_ARCHS=$(VALID_ARCHS) ENABLE_BITCODE=NO ONLY_ACTIVE_ARCH=NO EFFECTIVE_PLATFORM_NAME="-iphonesimulator" -derivedDataPath build clean build	
 	mv $(WORKSPACE_DIR)/$(BUILD_ROOT)/Release-iphonesimulator/TOCropViewController.framework/TOCropViewController $@
 
 TOCropViewController-iphoneos: Podfile.lock
-	cd $(WORKSPACE_DIR) && $(XBUILD) -project $(WORKSPACE) -scheme $(SCHEME) -sdk iphoneos -configuration Release ONLY_ACTIVE_ARCH=NO -derivedDataPath build clean build
+	cd $(WORKSPACE_DIR) && $(XBUILD) -project $(WORKSPACE) -scheme $(SCHEME) -sdk iphoneos -configuration Release ONLY_ACTIVE_ARCH=NO ENABLE_BITCODE=NO -derivedDataPath build clean build
 	mv $(WORKSPACE_DIR)/$(BUILD_ROOT)/Release-iphoneos/TOCropViewController.framework/TOCropViewController $@
 	cp -R $(WORKSPACE_DIR)/$(BUILD_ROOT)/Release-iphoneos/TOCropViewController.framework TOCropViewController.framework
 
