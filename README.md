@@ -18,4 +18,8 @@ For Android, download the lastest .aar and import the package into Android proje
 ## Thanks
 Android library from : https://github.com/ArthurHub/Android-Image-Cropper
 
+Update to 2.4.6
+
 iOS library from : https://github.com/TimOliver/TOCropViewController
+
+Update to 5665779
