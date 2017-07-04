@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Xam.Plugins.ImageCropper</id>
-    <version>1.1.1</version>
+    <version>1.2.0</version>
     <title>Xam.Plugins.ImageCropper</title>
     <authors>Michael Ridland @ XAM Consulting</authors>
     <owners>Michael Ridland @ XAM Consulting</owners>
@@ -18,9 +18,15 @@
 [feature] Update Android package to 2.3.1
 [feature] Update iOS component to 2.0.12
 
-1.1.1
+1.2.0
 [fix] Upload package App Store
+[feature] Update Android package to 2.4.6
     </releaseNotes>
+    <dependencies>
+      <group targetFramework="monoandroid71">
+        <dependency id="Xamarin.Android.Support.Exif" version="25.3.1" />
+      </group>
+    </dependencies>
   </metadata>
   <files>
     <file src="Droid/bin/Release/Xam.Plugins.ImageCropper.Droid.dll" target="lib\MonoAndroid10"/>
