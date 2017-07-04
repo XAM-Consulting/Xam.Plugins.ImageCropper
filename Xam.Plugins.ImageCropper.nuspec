@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Xam.Plugins.ImageCropper</id>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <title>Xam.Plugins.ImageCropper</title>
     <authors>Michael Ridland @ XAM Consulting</authors>
     <owners>Michael Ridland @ XAM Consulting</owners>
@@ -17,6 +17,9 @@
 1.1.0
 [feature] Update Android package to 2.3.1
 [feature] Update iOS component to 2.0.12
+
+1.1.1
+[fix] Upload package App Store
     </releaseNotes>
   </metadata>
   <files>
