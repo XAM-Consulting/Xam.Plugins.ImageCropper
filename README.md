@@ -1,5 +1,7 @@
 Xam.Plugins.ImageCropper is a useful image cropping and rotating library for Xamarin.iOS and Xamarin.Android 
 
+[![NuGet](https://img.shields.io/nuget/v/Xam.Plugins.ImageCropper.svg?label=NuGet)](https://www.nuget.org/packages/Xam.Plugins.ImageCropper) 
+
 ## Using them in Xamarin.Forms.
 Please follow the Sample solution in repo to use them in Xamarin.Forms.
 
