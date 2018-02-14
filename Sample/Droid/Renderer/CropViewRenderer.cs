@@ -23,7 +23,8 @@ namespace Xam.Plugins.ImageCropper.Sample.Droid
                 Bitmap bitmp = BitmapFactory.DecodeByteArray(page.Image, 0, page.Image.Length);
                 cropImageView.SetImageBitmap(bitmp);
 
-                var stackLayout = new StackLayout { Children = { cropImageView } };
+                var scrollView = new ScrollView { Content = cropImageView.ToView() };
+                var stackLayout = new StackLayout { Children = { scrollView } };
 
                 var rotateButton = new Button { Text = "Rotate" };
 
